@@ -1,0 +1,198 @@
+/* ================= ROOT ================= */
+:root {
+    --primary: #1e3a8a;
+    --secondary: #0284c7;
+    --text-dark: #1e293b;
+    --text-muted: #475569;
+    --bg-light: #f8fafc;
+    --text-light: #fff;
+}
+
+/* ================= HERO ================= */
+.ielts-hero {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.ielts-hero img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+/* Overlay for readability */
+.ielts-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(30,58,138,.55), rgba(2,132,199,.3));
+    display: grid;
+    place-items: center;
+    padding: 20px;
+}
+
+.ielts-hero-content {
+    text-align: center;
+    color: var(--text-light);
+    max-width: 900px;
+}
+
+.ielts-hero-content h1 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.ielts-hero-content p {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    opacity: .95;
+}
+
+/* ================= CONTENT ================= */
+.ielts-section {
+    padding: 80px 0;
+    background: var(--bg-light);
+}
+
+.ielts-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.section-header h2 {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    text-align: center;
+    color: var(--text-dark);
+    margin-bottom: 16px;
+}
+
+.intro {
+    max-width: 720px;
+    margin: 0 auto 60px;
+    text-align: center;
+    color: var(--text-muted);
+    line-height: 1.8;
+}
+
+/* ================= GRID ================= */
+.ielts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* ================= CARD ================= */
+.ielts-card {
+    background: #fff;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.05);
+    border: 1px solid rgba(0,0,0,.03);
+    position: relative;
+    transition: transform .3s ease, box-shadow .3s ease;
+    will-change: transform;
+}
+
+.ielts-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 5px;
+    width: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+
+.ielts-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 45px rgba(30,58,138,.12);
+}
+
+.ielts-card h3 {
+    font-size: 1.4rem;
+    color: var(--primary);
+    margin-bottom: 12px;
+}
+
+.ielts-card p {
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 18px;
+}
+
+/* ================= TABLE ================= */
+.ielts-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .95rem;
+}
+
+.ielts-table th {
+    background: var(--primary);
+    color: var(--text-light);
+    padding: 12px;
+    font-size: .85rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.ielts-table td {
+    padding: 12px;
+    text-align: center;
+    color: var(--text-dark);
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.ielts-table tr:nth-child(even) td {
+    background: #f1f5f9;
+}
+
+/* ================= ACCESSIBILITY ================= */
+.ielts-card:focus-within {
+    outline: 3px solid var(--secondary);
+    outline-offset: 4px;
+}
+
+.ielts-table th,
+.ielts-table td {
+    font-weight: 500;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+    .ielts-hero {
+        height: 280px;
+    }
+
+    .ielts-section {
+        padding: 50px 0;
+    }
+
+    .ielts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ielts-card {
+        padding: 25px 20px;
+    }
+
+    .ielts-hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .ielts-hero-content p {
+        font-size: 1rem;
+    }
+
+    .ielts-table th,
+    .ielts-table td {
+        font-size: .85rem;
+        padding: 10px;
+    }
+}

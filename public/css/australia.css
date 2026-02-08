@@ -1,0 +1,246 @@
+/* ================= VARIABLES ================= */
+:root {
+    --primary-blue: #1e3a8a;
+    --accent-red: #e31e24;
+    --accent-red-hover: #b3171b;
+    --text-dark: #334155;
+    --text-light: #64748b;
+    --bg-light: #f8fafc;
+}
+
+/* ================= GLOBAL RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-light);
+    overflow-x: hidden;
+    color: var(--text-dark);
+}
+
+/* ================= NAVBAR FIXES ================= */
+.navbar {
+    position: relative;
+    z-index: 1000;
+    background-color: var(--primary-blue);
+}
+
+.dropdown-menu {
+    position: absolute;
+    z-index: 1001;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 15px solid transparent;
+    background-clip: padding-box;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    border-radius: 8px;
+}
+
+@media (min-width: 992px) {
+    .nav-item.dropdown:hover .dropdown-menu {
+        display: block;
+        animation: fadeIn 0.3s ease;
+    }
+}
+
+/* ================= HERO ================= */
+.australia-hero {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Hero image */
+.australia-hero img.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Overlay */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.6), rgba(30, 58, 138, 0.4));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Hero content */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 20px;
+    animation: fadeInDown 1s ease-out;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.hero-content p {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    opacity: 0.95;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+/* ================= INFO SECTION ================= */
+.info-section {
+    background-color: var(--bg-light);
+    padding: 90px 0;
+}
+
+.info-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* ================= CARD ================= */
+.card-box {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-top-color 0.35s ease;
+    display: flex;
+    flex-direction: column;
+    border-top: 4px solid transparent;
+    height: 100%;
+}
+
+.card-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 55px rgba(30, 58, 138, 0.15);
+    border-top-color: var(--accent-red);
+}
+
+.icon-wrapper {
+    width: 60px;
+    height: 60px;
+    background-color: #eff6ff;
+    color: var(--primary-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 22px;
+    transition: all 0.3s ease;
+}
+
+.card-box:hover .icon-wrapper {
+    background-color: var(--primary-blue);
+    color: white;
+}
+
+.card-box h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+}
+
+.card-box p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 24px;
+    flex-grow: 1;
+}
+
+.btn-link {
+    color: var(--accent-red);
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.3s ease;
+    font-size: 1rem;
+}
+
+.btn-link i {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.btn-link:hover {
+    color: var(--accent-red-hover);
+}
+
+.btn-link:hover i {
+    transform: translateX(5px);
+}
+
+/* ================= ANIMATION ================= */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 991px) {
+    .dropdown-menu {
+        position: static !important;
+        float: none;
+        width: auto;
+        margin-top: 0;
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+        padding-left: 20px;
+    }
+
+    .dropdown-item {
+        color: white !important;
+    }
+    .dropdown-item:hover {
+        background-color: rgba(255,255,255,0.1);
+    }
+
+    .australia-hero {
+        height: 350px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .info-section {
+        padding: 50px 0;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}

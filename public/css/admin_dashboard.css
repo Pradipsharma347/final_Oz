@@ -1,0 +1,170 @@
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            height: 100vh; /* full screen height */
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 200px;
+            background: #2c3e50;
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #34495e;
+        }
+
+        .sidebar a {
+            padding: 15px 20px;
+            text-decoration: none;
+            color: white;
+            border-bottom: 1px solid #34495e;
+            cursor: pointer;
+        }
+
+        .sidebar a:hover {
+            background: #34495e;
+        }
+
+        /* Content */
+        .content {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .section {
+            display: none;      /* hide all sections by default */
+            flex-direction: column;
+            height: 100%;
+            padding: 20px;
+            overflow-y: auto;   /* scroll if content is large */
+        }
+
+        .section.active {
+            display: flex;      /* show only the active section */
+        }
+
+        .section img {
+            max-width: 80%;
+            max-height: 700px;
+            height: auto;
+            object-fit: contain;
+            margin: 0 auto;
+        }
+
+        /* Contact table styling */
+        .contact-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .contact-table th, .contact-table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .contact-table th {
+            background-color: #f2f2f2;
+        }
+
+        .contact-container {
+            width: 100%;
+            overflow-x: auto;
+        }
+        /* --- Testimonials Admin UI --- */
+    .testimonial-wrapper {
+        max-width: 900px;
+        margin: auto;
+    }
+
+    .testimonial-form {
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        margin-bottom: 30px;
+    }
+
+    .testimonial-form h2 {
+        margin-bottom: 15px;
+        color: #2c3e50;
+    }
+
+    .testimonial-form input,
+    .testimonial-form textarea {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        margin-bottom: 15px;
+        font-size: 14px;
+    }
+
+    .testimonial-form textarea {
+        resize: vertical;
+        min-height: 100px;
+    }
+
+    .testimonial-form button {
+        background: #2c3e50;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    .testimonial-form button:hover {
+        background: #1f2d3d;
+    }
+
+    .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 20px;
+    }
+
+    .testimonial-card {
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+        text-align: center;
+    }
+
+    .testimonial-card img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-bottom: 10px;
+        border: 3px solid #eee;
+    }
+
+    .testimonial-card h4 {
+        margin: 8px 0 5px;
+        color: #2c3e50;
+    }
+
+    .testimonial-card p {
+        font-size: 14px;
+        color: #555;
+    }
+
+    .testimonial-card a {
+        display: inline-block;
+        margin-top: 10px;
+        color: #e74c3c;
+        font-size: 13px;
+        text-decoration: none;
+    }
+

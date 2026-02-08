@@ -1,0 +1,208 @@
+/* ================= ROOT ================= */
+:root {
+    --primary: #1e3a8a;
+    --secondary: #0284c7;
+    --text-dark: #1e293b;
+    --text-muted: #475569;
+    --bg-light: #f8fafc;
+    --text-light: #fff;
+}
+
+/* ================= HERO ================= */
+.pte-hero {
+    position: relative;
+    width: 100%;
+    height: 420px;
+    overflow: hidden;
+}
+
+.pte-hero img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+.pte-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(30,58,138,.55), rgba(2,132,199,.3));
+    display: grid;
+    place-items: center;
+    padding: 20px;
+}
+
+.pte-hero-content {
+    text-align: center;
+    color: var(--text-light);
+    max-width: 900px;
+}
+
+.pte-hero-content h1 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.pte-hero-content p {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    line-height: 1.6;
+}
+
+/* ================= CONTENT ================= */
+.pte-section {
+    padding: 80px 0;
+    background: var(--bg-light);
+}
+
+.pte-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.section-header h2 {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    text-align: center;
+    color: var(--text-dark);
+    margin-bottom: 16px;
+}
+
+.pte-intro {
+    max-width: 800px;
+    margin: 0 auto 60px;
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+}
+
+/* ================= GRID ================= */
+.pte-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+/* ================= CARD ================= */
+.pte-card {
+    background: #fff;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.05);
+    border: 1px solid rgba(0,0,0,.03);
+    position: relative;
+    transition: transform .3s ease, box-shadow .3s ease;
+    will-change: transform;
+}
+
+.pte-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 5px;
+    width: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+
+.pte-card:hover,
+.pte-card:focus-within {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 45px rgba(30,58,138,.12);
+    outline: none;
+}
+
+.pte-card h3 {
+    font-size: 1.4rem;
+    color: var(--primary);
+    margin-bottom: 12px;
+}
+
+.pte-card p {
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 18px;
+}
+
+/* ================= TABLE ================= */
+.table-wrapper {
+    overflow-x: auto;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.05);
+}
+
+.pte-table {
+    width: 100%;
+    min-width: 600px;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+.pte-table th {
+    background: var(--primary);
+    color: var(--text-light);
+    padding: 14px;
+    font-size: .85rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.pte-table td {
+    padding: 14px;
+    text-align: center;
+    border-bottom: 1px solid #e2e8f0;
+    color: #334155;
+}
+
+.pte-table tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+/* ================= ACCESSIBILITY ================= */
+.pte-card:focus-within {
+    outline: 3px solid var(--secondary);
+    outline-offset: 4px;
+}
+
+.pte-table th,
+.pte-table td {
+    font-weight: 500;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+    .pte-hero {
+        height: 300px;
+    }
+
+    .pte-section {
+        padding: 50px 0;
+    }
+
+    .pte-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .pte-card {
+        padding: 25px 20px;
+    }
+
+    .pte-hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .pte-hero-content p {
+        font-size: 1rem;
+    }
+
+    .pte-table th,
+    .pte-table td {
+        font-size: .85rem;
+        padding: 10px;
+    }
+}

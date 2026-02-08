@@ -1,0 +1,159 @@
+* {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            background-color: #f4f6f9;
+        }
+
+        /* --- LEFT SIDE: THE IMAGE --- */
+        .login-image {
+            flex: 1.2; /* Takes up slightly more space on wide screens */
+            /* Use a high quality placeholder or your own image URL */
+            background-image: url('../image/frontpage.webp');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding: 40px;
+        }
+
+        /* Dark overlay so text on image is readable */
+        .login-image::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, rgba(44, 62, 80, 0.3), rgba(44, 62, 80, 0.5));
+        }
+
+        .image-text {
+            position: relative;
+            color: white;
+            z-index: 2;
+        }
+
+        .image-text h1 { margin: 0; font-size: 2.5rem; }
+        .image-text p { margin: 10px 0 0; font-size: 1rem; opacity: 0.9; }
+
+        /* --- RIGHT SIDE: THE FORM --- */
+        .login-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            padding: 20px;
+        }
+
+        .login-box {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+        }
+
+        .login-box h2 {
+            text-align: left;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .login-box .subtitle {
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        /* --- FORM ELEMENTS --- */
+        .input-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #34495e;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px 15px;
+            border: 2px solid #eef2f7;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #3498db;
+            background-color: #fbfdff;
+            box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1);
+        }
+
+        .error-msg {
+            background: #ffe3e3;
+            color: #d63031;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            border-left: 4px solid #d63031;
+        }
+
+        button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(to right, #3498db, #2980b9);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+
+        .login-footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 13px;
+            color: #95a5a6;
+        }
+
+        /* --- RESPONSIVE DESIGN (MOBILE) --- */
+        @media (max-width: 900px) {
+            .login-image {
+                display: none; /* Hide image on smaller screens/tablets */
+            }
+
+            .login-wrapper {
+                background: #f4f6f9; /* Light grey background on mobile */
+            }
+
+            .login-box {
+                background: white;
+                padding: 40px;
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            }
+        }
