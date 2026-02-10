@@ -23,9 +23,9 @@
       <h3>Quick Links</h3>
       <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="/services">Services</a></li>
-        <li><a href="/about">About Us</a></li>
-        <li><a href="/contact">Contact</a></li>
+        <li><a href="/service">Services</a></li>
+        <li><a href="/aboutus">About Us</a></li>
+        <li><a href="/contactus">Contact</a></li>
       </ul>
     </div>
 
@@ -58,7 +58,7 @@
             <img src="{{ asset('image/facebook.webp') }}" alt="Facebook">
           </a>
         </li>
-       
+
         <li>
           <a href="https://www.instagram.com/oz_connect_education.visa.syd/" target="_blank" aria-label="Instagram">
             <img src="{{ asset('image/instagram.webp') }}" alt="Instagram">
