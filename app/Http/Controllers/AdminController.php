@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin;
+use App\Models\User;
 use App\Models\Contact;
 use App\Models\Testimonial;
 use App\Models\Blog;
@@ -28,7 +28,7 @@ class AdminController extends Controller
             'password' => 'required',
         ]);
 
-        $admin = Admin::where('email', $request->email)->first();
+        $admin = User::where('email', $request->email)->first();
 
         if ($admin && Hash::check($request->password, $admin->password)) {
             Session::put('admin_id', $admin->id);
