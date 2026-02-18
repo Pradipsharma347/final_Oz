@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Admin;
 use App\Models\Contact;
 use App\Models\Testimonial;
 use App\Models\Blog;
@@ -28,7 +28,7 @@ class AdminController extends Controller
             'password' => 'required',
         ]);
 
-        $admin = User::where('email', $request->email)->first();
+        $admin = Admin::where('email', $request->email)->first();
 
         if ($admin && Hash::check($request->password, $admin->password)) {
             Session::put('admin_id', $admin->id);
@@ -88,65 +88,59 @@ class AdminController extends Controller
 
     // Update CEO Name & Message
     public function updateCEOInfo(Request $request)
-    {
-        if (!Session::has('admin_id')) {
-            return redirect()->route('admin.login.form');
-        }
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'message' => 'required|string',
+    ]);
 
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'message' => 'required|string',
-        ]);
+    $ceo = CEO::first();
+    if (!$ceo) {
+        $ceo = new CEO();
+    }
 
-        $ceo = CEO::first();
-        if (!$ceo) {
-            $ceo = new CEO();
-        }
+    $ceo->name = $request->name;
+    $ceo->message = $request->message;
+    $ceo->save();
 
-        $ceo->name = $request->name;
-        $ceo->message = $request->message;
+    return redirect()->route('admin.dashboard')->with('success', 'CEO info updated successfully!');
+}
+   // Upload / Replace CEO Image
+public function updateCEOImage(Request $request)
+{
+    $request->validate([
+        'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
+
+    $ceo = CEO::first();
+    if (!$ceo) $ceo = new CEO();
+
+    $imagePath = public_path('ceo/ceo.jpg');
+    if(file_exists($imagePath)) unlink($imagePath); // remove old image
+
+    $request->photo->move(public_path('ceo'), 'ceo.jpg');
+
+    $ceo->photo = 'ceo.jpg';
+    $ceo->save();
+
+    return redirect()->route('admin.dashboard')->with('success', 'CEO image uploaded successfully!');
+}
+
+// Delete CEO Image
+public function deleteCEOImage()
+{
+    $ceo = CEO::first();
+    $imagePath = public_path('ceo/ceo.jpg');
+
+    if($ceo && file_exists($imagePath)) {
+        unlink($imagePath); // delete file
+        $ceo->photo = null; // clear DB
         $ceo->save();
-
-        return redirect()->route('admin.dashboard')->with('success', 'CEO info updated successfully!');
     }
 
-    // Upload / Replace CEO Image
-    public function updateCEOImage(Request $request)
-    {
-        if (!Session::has('admin_id')) {
-            return redirect()->route('admin.login.form');
-        }
+    return redirect()->route('admin.dashboard')->with('success', 'CEO image deleted successfully!');
+}
 
-        $request->validate([
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
-
-        $imagePath = public_path('ceo/ceo.jpg');
-
-        if (file_exists($imagePath)) {
-            unlink($imagePath);
-        }
-
-        $request->file('photo')->move(public_path('ceo'), 'ceo.jpg');
-
-        return redirect()->route('admin.dashboard')->with('success', 'CEO image uploaded successfully!');
-    }
-
-    // Delete CEO Image
-    public function deleteCEOImage()
-    {
-        if (!Session::has('admin_id')) {
-            return redirect()->route('admin.login.form');
-        }
-
-        $imagePath = public_path('ceo/ceo.jpg');
-
-        if (file_exists($imagePath)) {
-            unlink($imagePath);
-        }
-
-        return redirect()->route('admin.dashboard')->with('success', 'CEO image deleted successfully!');
-    }
 
     // ------------------- Team Member CRUD -------------------
 

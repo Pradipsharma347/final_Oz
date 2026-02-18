@@ -136,8 +136,7 @@
         </div>
 
         <!-- CEO SECTION -->
-       <!-- CEO SECTION -->
-<div id="ceo" class="section">
+      <div id="ceo" class="section">
     <h2>Manage CEO Info</h2>
 
     @if(session('success'))
@@ -148,6 +147,7 @@
 
         <!-- Left side: Forms -->
         <div style="flex:1; min-width:250px;">
+
             <!-- Update CEO Name & Message -->
             <form action="{{ route('admin.ceo.info') }}" method="POST" style="margin-bottom:20px;">
                 @csrf
@@ -173,7 +173,11 @@
             </form>
 
             <!-- Delete CEO Image -->
-            @if(file_exists(public_path('ceo/ceo.jpg')))
+            @php
+                $ceoImage = public_path('ceo/ceo.jpg');
+            @endphp
+
+            @if(file_exists($ceoImage))
                 <form action="{{ route('admin.ceo.delete.image') }}" method="POST" style="margin-top:5px;">
                     @csrf
                     @method('DELETE')
@@ -181,20 +185,20 @@
                             onclick="return confirm('Delete CEO image?');">Delete Image</button>
                 </form>
             @endif
+
         </div>
 
         <!-- Right side: CEO Image Preview -->
         <div style="flex:0 0 150px; display:flex; justify-content:center; align-items:flex-start;">
-            @if(file_exists(public_path('ceo/ceo.jpg')))
-                <img src="{{ asset('ceo/ceo.jpg') }}" alt="CEO Image"
-                     style="width:150px; height:150px; object-fit:cover; border-radius:50%; border:1px solid #ccc;">
-            @else
-                <img src="{{ asset('image/aryan.webp') }}" alt="CEO Image"
+            @if(file_exists($ceoImage))
+                <img src="{{ asset('ceo/ceo.jpg') }}?v={{ time() }}" alt="CEO Image"
                      style="width:150px; height:150px; object-fit:cover; border-radius:50%; border:1px solid #ccc;">
             @endif
         </div>
+
     </div>
 </div>
+
 
 
         <!-- OUR TEAM SECTION -->
